@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  /*Estou dizendo que "O tamanho da caixa vai ser contabilizado a partir da borda da caixa". Preciso por isso pq nem toda caixa é assim por natureza, algumas contam o tamanho da caixa a partir do conteúdo, por isso qnd eu pus o tamanho + padding no input lá em baixo, ele transbordou dos 100% q eu tinha definido de width, pq ele conta a partir do conteúdo, e já o button não, pq o button já é border-box por natureza. Qnd Mayk explicou, disse que qnd agt coloca padding numa caixa q já tem isso, se ela já ta usando 100%, o width engole esse padding e ela não amplia, não transborda. Já se não tem isso, ela transborda pra por o padding, colocando, além dos 100% de width, o que tiver sido dado de padding, pq essa conta o tamanho a partir do conteúdo. ESTUDAR MELHOR SOBRE ISSO PRA ENTENDER COMO ISSO SE APLICA MELHOR, E COMO IDENTIFICAR A SITUAÇÃO*/
+}
+
+body {
+  /* width: 100vw;
+  height: 100vh; */
+  height: calc(100vh - 100px);
+  /*eu aqui estou estabelecendo que é 100vh pro linear-gradient pegar a tela na altura toda e não ficar aquela linha azul, porém como eu coloquei 100px de margin-top no main, precisaria tirar isso, pq ele ta somando e ta ficando altura demais. Por isso a rolagem. (Eu só não entendi pq isso só acontece qnd eu to no linear gradient. É por conta do 100%? E seria 100vh?)*/
+
+  background-image: linear-gradient(
+    180deg,
+    rgb(0, 34, 128) 30%,
+    rgb(0, 0, 0) 100%
+  );
+  /* background-color: blue; */
+
+  text-align: center;
+  font-family: 'DM Sans', sans-serif; /*sem serif, sem os contornos na letra como fica em fontes padrões. Sem o serif ela fica lisa*/
+  color: white;
+}
+
+main {
+  width: 80%; /*80% da viewport. Valor em unidade flexível*/
+  max-width: 400px;
+  /*Myke falou "Se a tela for maior que a caixa, ele para nos 400px. Mas se for diminuindo, ele vai sempre usar os 80%"*/
+  /*Isto pq qnd eu uso só 80% da viewport, se ela diminui, a caixa diminui tbm. Mas eu n quero q ela diminua sempre, se n ela quebra daquele jeito que agt viu. Eu quero q ela comece a quebrar só qnd a vw diminuir a 400px. Nisso ele começa a usar os 80%, mas os 80% de seja lá qual o valor da vw abaixo de 400px q ela tem agr. EU SÓ NÃO ENTENDI BEM A UTILIDADE DISSO, QND EXATAMENTE EU VOU PRECISAR USAR ISSO. Mas pelo que entendi é importante pra responsividade. Pq se eu ponho só 400px de width, no mobile o main vai ficar enorme, pq é valor fixo. Então eu defino que quero q ele use sempre 80% da vw, pra qnd ele tiver no mobile de 375px de width, por ex, ele use 80% dos 375px, se ajustando flexívelmente apenas a partir daí. OU SEJA, sempre q for fazer um layout começando no desktop, já vai testando responsividade pra ir vendo essas coisas. Por isso q falam q é melhor começar pelo mobile. */
+
+  margin-top: 100px;
+  margin-inline: auto;
+}
+
+main h1 {
+  margin-top: 40px;
+  margin-bottom: 10px;
+
+  opacity: 0.9;
+}
+
+main p {
+  margin-bottom: 40px;
+
+  /* font-size: 13px; */
+  /*eu tinha colocado, mas tirei, e só aí fez o efeito da quebra de linha que eu estava procurando*/
+  opacity: 0.7;
+}
+
+main p span {
+  font-weight: bold;
+}
+
+input,
+button {
+  display: block;
+  width: 100%; /*100% da caixa que ele está dentro*/
+  /*larguras flexíveis são melhores pra questão de flexibilidade*/
+  /*eu ahcei que tivesse entendido isso do width, mas buguei qnd cheguei aqui*/
+
+  padding: 20px;
+  /*lembra que o nome disso é: shorthand*/
+  /*Por causa dele que agt usou o box-sizing: border-box*/
+  /*só o padding já deu o espaço pro placeholder*/
+  /*usamos ele pra por a altura do botão*/
+
+  border: none;
+  border-radius: 4px;
+  /*tinha que tirar tbm aquela borda q fica qnd agt escreve e clica*/
+
+  font-family: 'DM Sans', sans-serif;
+  /*não entendi pq n pegou só de eu por no body e eu ter q colocar aqui tbm*/
+  font-size: 20px;
+}
+
+input {
+  /* max-width: 340px;
+  height: 46px; */
+  /*ele não usou isso, ele usou preenchimento interno (padding) pra montar o tamnho legal do input e do button. Só n sei pq exatamente essa forma é melhor*/
+
+  /* margin-inline: auto; 
+  não precisa mais, pq ele já usa 100% do main, e o main está no meio já*/
+  margin-bottom: 20px;
+}
+
+button {
+  /* max-width: 345px;
+  height: 49px; */
+  /*ele não usou isso, ele usou preenchimento interno (padding) pra montar o tamnho legal do input e do button. Só n sei pq exatamente essa forma é melhor*/
+
+  color: white;
+
+  background-color: purple;
+  animation: button 9s infinite;
+
+  transition: filter 0.2s; /*nome da propriedade q eu apliquei no estado hover, e eu ponho a transição no estado anterior + tempo q ela acontece (onde .2s = 0.2s)*/
+}
+
+/*é um pseudo-element (que é diferente de pseudo-class)*/
+/* ::placeholder {
+  margin-left: 5px;
+  ou
+  text-align: center;
+} 
+eu tinha colocado, mas o próprio preenchimento interno (padding) q eu coloquei no input já fez esse efeito do margin-left*/
+
+/*pseudo-class*/
+button:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+@keyframes button {
+  50% {
+    top: 0px;
+    left: 0px;
+    background: #0202a0;
+  }
+  25% {
+    top: 0px;
+    left: 0px;
+    background: purple;
+  }
+  25% {
+    top: 0px;
+    left: 0px;
+    background: #e000ce;
+  }
+}
+/*estudar isso aqui direito*/
+
+#resposta {
+  margin-top: 30px;
+
+  transition: opacity 1s;
+  /*Esse transition agt coloca pq agt fez um esquema lá no JS de fazer a resposta sumir depois de 3s (ficar em opacidade 0), mas tá sumindo muito brusco, então agt põe isso aqui pra sumir suavemente, dentro de 1s. Dá uma olhada no JS. E isso pq a transition agt sempre coloca no estado que aparece primeiro, q no caso é esse aqui, q é como a resposta está antes de começar a sumir*/
+}
+
+#resposta div {
+  font-size: 16px;
+  font-weight: normal;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}

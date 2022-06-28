@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="main.js" defer></script>
+    <!--quando eu chamo o script aqui eu preciso por esse "defer", pq ele diz que é pra deixar essa linha pra ler por último, ou seja, ele vai ler todo o meu html e só depois vai ler o meu js. Se ele ler primeiro, o meu "fazerPergunta()" lá no final do código não faz sentido, pq ele leu antes sobre oq ele faz, e não depois que chamou a função. Por isso qnd agt põe esse script no fim do código ele já funciona logo, sem precisar por esse defer (PESQUISAR MELHOR SOBRE ISSO)-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Descubra seu destino</title>
+  </head>
+  <body>
+    <main>
+      <!--ele usou uma div com id="container"-->
+      <img
+        src="https://gist.githubusercontent.com/maykbrito/0acdf4ce919838ffed50915a31fc5b23/raw/6f4dd01ec3116428ec4c99255944cb9ac7927590/cristal-ball.svg"
+        alt="Imagem de uma bola de cristal"
+      />
+      <h1>Vou revelar seu destino!</h1>
+      <p>
+        Clique em <span>fazer pergunta</span> para que seu destino seja
+        revelado.
+      </p>
+      <input id="inputPergunta" type="text" placeholder="Digite sua pergunta" />
+      <!--ele recomenda colocar o / no final. Como é o nome dessas tags que fecham nelas msms?-->
+      <button id="buttonPerguntar" onclick="fazerPergunta()">
+        Fazer Pergunta
+      </button>
+
+      <h3 id="resposta">
+        <!-- <div>Pergunta que fiz</div>
+        Sim! (resposta) -->
+        <!--Isso era oq estava antes pra gente poder entender o que iria acontecer. O que acontece é que ho h3 fica vazio, mas as propriedades css são aplicadas como se tivesse alguma coisa aqui, e de fato vai ter, que vai ser algo que o JS vai adiciuonar. E no JS agt vai adicionar justamente uma "<div>Pergunta q a pessoa escrever</div> e um texto", e aí as props vão ser aplicadas. Isso pq no JS eu consigo escrever no HTML usando o innerHTML, aí nisso eu escrevo esses "<div>" tornando isso uma tag de novo. Pra eu aprender legal isso só refazendo bastante vezes, acho-->
+      </h3>
+    </main>
+  </body>
+</html>
